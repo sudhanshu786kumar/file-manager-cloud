@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply antialiased;
+  }
+  body {
+    @apply bg-gray-50 text-gray-900;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-lg font-medium transition duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+
+  .btn-primary {
+    @apply bg-primary-500 text-white hover:bg-primary-600 focus:ring-primary-500;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-500 text-white hover:bg-gray-600 focus:ring-gray-500;
+  }
+
+  .btn-danger {
+    @apply bg-red-500 text-white hover:bg-red-600 focus:ring-red-500;
+  }
+
+  .input {
+    @apply w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 rounded-full hover:bg-gray-400;
+}
+
+.auth-container {
+  @apply p-4 bg-white rounded-lg shadow-md mb-4;
+}
+
+.user-info {
+  @apply flex items-center gap-4;
+}
+
+.user-avatar {
+  @apply w-10 h-10 rounded-full;
+}
+
+.sign-in-options {
+  @apply flex gap-4;
+}
+
+.google-btn, .github-btn {
+  @apply px-4 py-2 rounded-md text-white font-medium;
+}
+
+.google-btn {
+  @apply bg-blue-600 hover:bg-blue-700;
+}
+
+.github-btn {
+  @apply bg-gray-800 hover:bg-gray-900;
+}
+
+.sign-out-btn {
+  @apply px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700;
+}
+
+.file-upload {
+  @apply p-4 bg-white rounded-lg shadow-md;
+}
+
+.upload-btn {
+  @apply px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 mb-4;
+}
+
+.file-list {
+  @apply space-y-2;
+}
+
+.file-item {
+  @apply flex items-center justify-between p-2 bg-gray-50 rounded-md;
+}
+
+.file-actions {
+  @apply flex gap-2;
+}
+
+.download-btn {
+  @apply px-3 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 text-sm;
+}
+
+.delete-btn {
+  @apply px-3 py-1 bg-red-600 text-white rounded-md hover:bg-red-700 text-sm;
+}
