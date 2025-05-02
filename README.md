@@ -15,7 +15,7 @@ A modern, secure, and beautifully designed file manager app for uploading, organ
 - Download and delete files easily
 
 ## 🌐 Live Demo
-[View Live App](https://sudhanshu-kumar-portfolio.netlify.app/)
+[View Live App](https://sedmo-file-manager.netlify.app)
 
 ## 🛠️ Tech Stack
 - **Frontend:** React, Tailwind CSS
