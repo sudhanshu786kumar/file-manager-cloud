@@ -225,10 +225,10 @@ const FileUpload = () => {
       
       {user ? (
         <>
-          {/* Neumorphic Control Bar */}
-          <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-8">
-            <div className="flex flex-wrap gap-2 rounded-2xl bg-[#e0e5ec] shadow-[8px_8px_24px_#a3b1c6,-8px_-8px_24px_#ffffff] px-4 py-4 backdrop-blur-md">
-              <div className="flex items-center gap-2">
+          {/* Responsive Neumorphic Control Bar */}
+          <div className="flex flex-col gap-3 mb-3 sm:flex-row sm:items-center sm:gap-4 sm:mb-8">
+            <div className="flex flex-col gap-3 w-full sm:flex-row sm:flex-wrap sm:gap-2 sm:rounded-2xl sm:bg-[#e0e5ec] sm:shadow-[8px_8px_24px_#a3b1c6,-8px_-8px_24px_#ffffff] sm:px-4 sm:py-4 sm:backdrop-blur-md sm:w-auto rounded-2xl bg-[#e0e5ec] shadow-[8px_8px_24px_#a3b1c6,-8px_-8px_24px_#ffffff] px-4 py-4">
+              <div className="flex items-center gap-3 sm:gap-2">
                 <select
                   value={selectedFolder}
                   onChange={(e) => setSelectedFolder(e.target.value)}
@@ -250,7 +250,7 @@ const FileUpload = () => {
                   </svg>
                 </button>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-3 sm:gap-2">
                 <select
                   value={selectedTag}
                   onChange={(e) => setSelectedTag(e.target.value)}
@@ -273,122 +273,112 @@ const FileUpload = () => {
                   </svg>
                 </button>
               </div>
+              <button
+                onClick={handleUpload}
+                className="flex items-center justify-center gap-2 rounded-full w-16 h-16 bg-gradient-to-r from-sky-200 to-blue-300 shadow-[8px_8px_24px_#a3b1c6,-8px_-8px_24px_#ffffff] text-blue-700 shadow-lg hover:from-sky-300 hover:to-blue-400 focus:outline-none focus:ring-2 focus:ring-sky-400 transition disabled:opacity-60 sm:ml-4"
+                disabled={uploading}
+              >
+                {uploading ? (
+                  <span className="loader mr-2"></span>
+                ) : (
+                  <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" />
+                  </svg>
+                )}
+              </button>
             </div>
-            <button
-              onClick={handleUpload}
-              className="flex items-center justify-center gap-2 rounded-full w-16 h-16 bg-gradient-to-r from-sky-200 to-blue-300 shadow-[8px_8px_24px_#a3b1c6,-8px_-8px_24px_#ffffff] text-blue-700 shadow-lg hover:from-sky-300 hover:to-blue-400 focus:outline-none focus:ring-2 focus:ring-sky-400 transition disabled:opacity-60"
-              disabled={uploading}
-            >
-              {uploading ? (
-                <span className="loader mr-2"></span>
-              ) : (
-                <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" />
-                </svg>
-              )}
-            </button>
           </div>
 
-          {/* File Grid with Scrollable Container */}
-          {filteredFiles.length === 0 ? (
-            <div className="mt-8 text-center py-12">
-              <svg className="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 13h6m-3-3v6m-9 1V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
-              </svg>
-              <h3 className="mt-2 text-sm font-medium text-gray-900 dark:text-gray-200">No files</h3>
-              <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">Get started by uploading a new file.</p>
-            </div>
-          ) : (
-            <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 max-h-[400px] sm:max-h-[500px] overflow-y-auto pr-2 custom-scrollbar">
-              {filteredFiles.map(file => (
-                <div
-                  key={file.id}
-                  className="bg-[#e0e5ec] rounded-2xl p-4 mb-4 shadow-[4px_4px_12px_#bfc9d9,-4px_-4px_12px_#ffffff] flex flex-col gap-2 transition hover:shadow-[inset_4px_4px_12px_#bfc9d9,inset_-4px_-4px_12px_#ffffff] sm:shadow-[8px_8px_24px_#a3b1c6,-8px_-8px_24px_#ffffff] sm:hover:shadow-[inset_8px_8px_24px_#a3b1c6,inset_-8px_-8px_24px_#ffffff] w-full"
-                >
-                  {editingFile?.id === file.id ? (
-                    <div className="space-y-2">
-                      <input
-                        type="text"
-                        value={newFileName}
-                        onChange={(e) => setNewFileName(e.target.value)}
-                        className="input rounded-xl bg-[#e0e5ec] shadow-[inset_4px_4px_8px_#a3b1c6,inset_-4px_-4px_8px_#ffffff] border-none focus:ring-2 focus:ring-blue-200 text-gray-800"
-                      />
+          {/* Responsive File Grid with Scrollable Container */}
+          <div className="grid grid-cols-1 gap-3 mt-0 sm:grid-cols-2 lg:grid-cols-3 sm:gap-4 max-h-[400px] sm:max-h-[500px] overflow-y-auto pr-2 custom-scrollbar">
+            {filteredFiles.map(file => (
+              <div
+                key={file.id}
+                className="bg-[#e0e5ec] rounded-2xl p-4 shadow-[4px_4px_12px_#bfc9d9,-4px_-4px_12px_#ffffff] flex flex-col gap-2 w-full sm:mb-0"
+              >
+                {editingFile?.id === file.id ? (
+                  <div className="space-y-2">
+                    <input
+                      type="text"
+                      value={newFileName}
+                      onChange={(e) => setNewFileName(e.target.value)}
+                      className="input rounded-xl bg-[#e0e5ec] shadow-[inset_4px_4px_8px_#a3b1c6,inset_-4px_-4px_8px_#ffffff] border-none focus:ring-2 focus:ring-blue-200 text-gray-800"
+                    />
+                    <div className="flex space-x-2">
+                      <button
+                        onClick={() => handleUpdate(file.id)}
+                        className="btn btn-primary flex-1"
+                      >
+                        Save
+                      </button>
+                      <button
+                        onClick={() => setEditingFile(null)}
+                        className="btn btn-secondary flex-1"
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  <>
+                    <div className="flex items-center justify-between">
+                      <span className="text-base font-semibold text-gray-800 truncate">
+                        {file.originalFilename}
+                      </span>
                       <div className="flex space-x-2">
                         <button
-                          onClick={() => handleUpdate(file.id)}
-                          className="btn btn-primary flex-1"
+                          onClick={() => handleEdit(file)}
+                          className="text-gray-400 hover:text-gray-500 dark:hover:text-gray-200"
                         >
-                          Save
+                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                          </svg>
                         </button>
                         <button
-                          onClick={() => setEditingFile(null)}
-                          className="btn btn-secondary flex-1"
+                          onClick={() => handleDelete(file.id)}
+                          className="text-gray-400 hover:text-red-500 dark:hover:text-red-400"
                         >
-                          Cancel
+                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                          </svg>
                         </button>
                       </div>
                     </div>
-                  ) : (
-                    <>
-                      <div className="flex items-center justify-between">
-                        <span className="text-base font-semibold text-gray-800 truncate">
-                          {file.originalFilename}
-                        </span>
-                        <div className="flex space-x-2">
-                          <button
-                            onClick={() => handleEdit(file)}
-                            className="text-gray-400 hover:text-gray-500 dark:hover:text-gray-200"
-                          >
-                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                            </svg>
-                          </button>
-                          <button
-                            onClick={() => handleDelete(file.id)}
-                            className="text-gray-400 hover:text-red-500 dark:hover:text-red-400"
-                          >
-                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                            </svg>
-                          </button>
+                    <div className="mt-2 space-y-1">
+                      {file.folder && (
+                        <div className="flex items-center text-xs text-gray-600">
+                          <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+                          </svg>
+                          {file.folder}
                         </div>
-                      </div>
-                      <div className="mt-2 space-y-1">
-                        {file.folder && (
-                          <div className="flex items-center text-xs text-gray-600">
-                            <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
-                            </svg>
-                            {file.folder}
-                          </div>
-                        )}
-                        {file.tags && file.tags.length > 0 && (
-                          <div className="flex flex-wrap gap-1">
-                            {file.tags.map(tag => (
-                              <span key={tag} className="px-2 py-1 text-xs bg-gray-200 rounded-full text-gray-600">
-                                {tag}
-                              </span>
-                            ))}
-                          </div>
-                        )}
-                      </div>
-                      <div className="mt-4 flex justify-between items-center">
-                        <span className="text-xs text-gray-600">
-                          {new Date(file.uploadedAt?.toDate()).toLocaleDateString()}
-                        </span>
-                        <button
-                          onClick={() => handleDownload(file)}
-                          className="text-blue-500 hover:text-blue-700 text-sm font-medium"
-                        >
-                          Download
-                        </button>
-                      </div>
-                    </>
-                  )}
-                </div>
-              ))}
-            </div>
-          )}
+                      )}
+                      {file.tags && file.tags.length > 0 && (
+                        <div className="flex flex-wrap gap-1">
+                          {file.tags.map(tag => (
+                            <span key={tag} className="px-2 py-1 text-xs bg-gray-200 rounded-full text-gray-600">
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                    <div className="mt-4 flex justify-between items-center">
+                      <span className="text-xs text-gray-600">
+                        {new Date(file.uploadedAt?.toDate()).toLocaleDateString()}
+                      </span>
+                      <button
+                        onClick={() => handleDownload(file)}
+                        className="text-blue-500 hover:text-blue-700 text-sm font-medium"
+                      >
+                        Download
+                      </button>
+                    </div>
+                  </>
+                )}
+              </div>
+            ))}
+          </div>
         </>
       ) : (
         <div className="mt-8 text-center py-12">
