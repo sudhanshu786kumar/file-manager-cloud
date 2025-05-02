@@ -1,12 +1,55 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+# Simple File Manager – Effortless Cloud Storage
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+A modern, secure, and beautifully designed file manager app for uploading, organizing, and managing your files in the cloud. Built with React, Firebase, and a Neumorphic UI for a delightful user experience.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🚀 Features
+- Upload, organize, and manage files in the cloud
+- Create folders and tags for easy organization
+- Modern neumorphic design for a soft, tactile look
+- Google authentication for secure sign-in
+- Responsive and mobile-friendly UI
+- Download and delete files easily
+
+## 🌐 Live Demo
+[View Live App](https://sudhanshu-kumar-portfolio.netlify.app/)
+
+## 🛠️ Tech Stack
+- **Frontend:** React, Tailwind CSS
+- **Backend:** Firebase (Firestore, Auth)
+- **Cloud Storage:** Cloudinary
+
+## 📦 Getting Started
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/sudhanshu786kumar/simple-file-manager.git
+   cd simple-file-manager
+   ```
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+3. **Set up Firebase:**
+   - Create a Firebase project and add your config to `src/firebase.js`.
+   - Enable Firestore and Authentication (Google).
+4. **Run the app:**
+   ```bash
+   npm run dev
+   ```
+
+## 🔒 SEO & Meta Tags
+This app is optimized for SEO and social sharing. Example meta tags:
+```html
+
+
+## 👤 Author
+**Sudhanshu Kumar**  
+[GitHub: sudhanshu786kumar](https://github.com/sudhanshu786kumar)
+
+---
+
+> Made with ❤️ by Sudhanshu Kumar
